@@ -1,23 +1,27 @@
 package com.riodan.SpringBootSpringDataJPA.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
+import java.util.List;
+
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 @Entity
-public class Section {
-    @Id
-    @GeneratedValue
-    private Integer id;
+public class Section  extends  BaseEntity{
     private String name;
     private int order;
+
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    private Course course;
+
+    @OneToMany(mappedBy = "section")
+    private List<Lecture> lectures;
+
 
 }

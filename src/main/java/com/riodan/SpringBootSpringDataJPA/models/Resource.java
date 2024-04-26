@@ -1,18 +1,18 @@
 package com.riodan.SpringBootSpringDataJPA.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE) //
 public class Resource {
     @Id
     @GeneratedValue
@@ -20,5 +20,9 @@ public class Resource {
     private String name;
     private int size;
     private String url;
+
+    @OneToOne
+    @JoinColumn(name = "lecture_id")
+    private Lecture lecture;
 
 }
