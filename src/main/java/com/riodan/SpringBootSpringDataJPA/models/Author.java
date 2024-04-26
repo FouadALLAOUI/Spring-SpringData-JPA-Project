@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Locale;
 
 @Data
@@ -30,6 +31,10 @@ public class Author {
     private LocalDateTime createdAt;
     @Column(insertable = false)
     private LocalDateTime lastModified;
+
+
+    @ManyToMany(mappedBy = "authors")
+    private List<Course> courses;
 
 
 

@@ -1,12 +1,12 @@
 package com.riodan.SpringBootSpringDataJPA.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -19,6 +19,20 @@ public class Course {
     @GeneratedValue
     private Integer id;
     private String name;
-    private String descriptipon;
+    private String description;
+
+
+    @ManyToMany
+    @JoinTable(
+            name = "authors_courses",
+            joinColumns = {
+                    @JoinColumn(name = "course_id")
+            },
+            inverseJoinColumns = {
+                    @JoinColumn(name = "author_id")
+            }
+    )
+    private List<Author> authors;
+
 
 }
