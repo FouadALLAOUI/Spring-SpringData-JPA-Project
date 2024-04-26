@@ -12,8 +12,8 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @SuperBuilder
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE) //
-@DiscriminatorColumn(name = "resource_type") //dtype by default
+@Inheritance(strategy = InheritanceType.JOINED) //
+//@DiscriminatorColumn(name = "resource_type") //dtype by default
 public class Resource {
     @Id
     @GeneratedValue
