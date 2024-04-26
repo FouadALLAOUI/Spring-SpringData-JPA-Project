@@ -8,6 +8,8 @@ import java.util.Locale;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 //@Table(name = "AUTHOR_TBL")
 public class Author {
@@ -23,8 +25,7 @@ public class Author {
     private String email;
     private int age;
     @Column(
-            updatable = false,
-            nullable = false
+            updatable = false
     )
     private LocalDateTime createdAt;
     @Column(insertable = false)
