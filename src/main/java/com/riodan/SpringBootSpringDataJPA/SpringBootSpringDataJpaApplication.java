@@ -16,7 +16,7 @@ public class SpringBootSpringDataJpaApplication {
 		SpringApplication.run(SpringBootSpringDataJpaApplication.class, args);
 	}
 
-	@Bean
+	//@Bean
 	public CommandLineRunner commandLineRunner(
 			AuthorRepository repository,
 			VideoRepository videoRepository
@@ -35,6 +35,7 @@ public class SpringBootSpringDataJpaApplication {
 					.length(5)
 					.build();
 			videoRepository.save(video);
+
 		};
 	}
 

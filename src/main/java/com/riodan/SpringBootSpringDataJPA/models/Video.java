@@ -2,6 +2,7 @@ package com.riodan.SpringBootSpringDataJPA.models;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -12,6 +13,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @Entity
 //@DiscriminatorValue("V")
+@PrimaryKeyJoinColumn(name = "video_id" )
 public class Video extends Resource {
 
     private int length;
